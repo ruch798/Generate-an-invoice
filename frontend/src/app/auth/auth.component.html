@@ -1,0 +1,50 @@
+<div class="limiter">
+  <div class="container-login">
+    <mat-card>
+      <div *ngIf="isResultsLoading" class="mat-elevation-z8">
+        <div class="loading-shade">
+          <mat-spinner color="accent"></mat-spinner>
+        </div>
+      </div>
+      <mat-card-title>{{title}}</mat-card-title>
+      <mat-card-content>
+        <form class="form-container" [formGroup]="authForm" novalidate (ngSubmit)="onSubmit()">
+          <mat-form-field color="accent"  >
+            <input matInput placeholder="Email" formControlName="email">
+            <mat-error *ngIf="authForm.controls.email.invalid && authForm.controls.email.touched"> email is required</mat-error>
+          </mat-form-field>
+          <mat-form-field color="accent"  >
+            <input matInput placeholder="Password" formControlName="password" type="password">
+            <mat-error *ngIf="authForm.controls.password.invalid && authForm.controls.password.touched"> password is required</mat-error>
+          </mat-form-field>
+          <mat-form-field color="accent" *ngIf="title === 'Signup'" >
+            <input matInput
+             placeholder="Name"
+             formControlName="name"
+              type="text">
+          </mat-form-field>
+          <div>
+            <button mat-raised-button class="btn-block" [disabled]="!authForm.valid" type="submit" color="accent">{{title}}</button>
+            <a class="btn btn-block forgot-password" (click) ="forgotPassHandler()">forgot password</a>
+            
+            <a href="/api/auth/twitter" class="btn btn-social btn-block btn-twitter" mat-button>
+              <i class="fa fa-twitter"></i>
+              Login with Twitter
+            </a>
+
+            
+
+          </div>
+        </form>
+      </mat-card-content>
+      <div class="alternative" *ngIf="title === 'Login'">
+        <p>Don't have an account?</p>
+        <button mat-raised-button class="btn-block" color="accent" [routerLink]="['/signup']">Signup</button>
+      </div>
+      <div class="alternative" *ngIf="title === 'Signup'">
+        <p>Have an account?</p>
+        <button mat-raised-button class="btn-block" color="accent" [routerLink]="['/login']">Login</button>
+      </div>
+    </mat-card>
+  </div>
+</div>
