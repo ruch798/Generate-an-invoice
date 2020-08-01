@@ -1,3 +1,5 @@
 # Generate an invoice
-MEAN Stack
- 
+
+Tech Stack:
+MongoDB  | Express |  Angular  | NodeJS 
+
