@@ -1,2 +1,2 @@
-# Invoice-Generator
+# Generate an invoice
  
